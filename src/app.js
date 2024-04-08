@@ -1,9 +1,10 @@
-import express from 'express';
-const hostname = '127.0.0.1';
+import api from './api/index';
 const app = express();
-const port = 3000;
 
 app.use('/public', express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use('/api/v1', api);
 
 app.get('/', (req, res) => {
   res.send('Welcome to my REST API!');
@@ -23,6 +24,4 @@ app.get('/api/v1/cat', (req, res) => {
 
 app.use('/public', express.static('public'));
 
-app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+export default app;
