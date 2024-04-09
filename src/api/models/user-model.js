@@ -1,36 +1,44 @@
-// mock data
-const catItems = [
+const userItems = [
   {
-    cat_id: 9592,
-    cat_name: 'Frank',
-    weight: 11,
-    owner: 3609,
-    filename: 'f3dbafakjsdfhg4',
-    birthdate: '2021-10-12',
+    user_id: 3609,
+    name: 'John Doe',
+    username: 'johndoe',
+    email: 'john@metropolia.fi',
+    role: 'user',
+    password: 'password',
   },
   {
-    cat_id: 9590,
-    cat_name: 'Mittens',
-    weight: 8,
-    owner: 3602,
-    filename: 'f3dasdfkjsdfhgasdf',
-    birthdate: '2021-10-12',
+    user_id: 3602,
+    name: 'Jane Doe',
+    username: 'janedoe',
+    email: 'jane@metropolia.fi',
+    role: 'admin',
+    password: 'password',
   },
+  {
+    user_id: 3603,
+    name: 'John Smith',
+    username: 'johnsmith',
+    email: 'johnny@metropolia.fi2',
+    role: 'user',
+    password: 'password',
+  }
 ];
 
-const listAllCats = () => {
-  return catItems;
+
+const listAlLUsers = () => {
+  return userItems;
 };
 
-const findCatById = (id) => {
-  return catItems.find((item) => item.cat_id == id);
+const findUserById = (id) => {
+  return userItems.find((item) => item.user_id == id);
 };
 
-const addCat = (cat) => {
-  const {cat_name, weight, owner, filename, birthdate} = cat;
-  const newId = catItems[0].cat_id + 1;
-  catItems.unshift({cat_id: newId, cat_name, weight, owner, filename, birthdate});
-  return {cat_id: newId};
+const addUser = (user) => {
+  const {name, username, email, role, password} = user;
+  const newId = userItems[0].user_id + 1;
+  userItems.unshift({user_id: newId, name, username, email, role, password});
+  return {user_id: newId};
 };
 
-export {listAllCats, findCatById, addCat};
+export {listAlLUsers, findUserById, addUser};
