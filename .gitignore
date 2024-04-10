@@ -280,4 +280,9 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# ignore content of uploads folder
+uploads/*
+# except one (empty) file to have the folder in version control
+!uploads/.gitkeep
+
 # End of https://www.toptal.com/developers/gitignore/api/node,windows,webstorm
