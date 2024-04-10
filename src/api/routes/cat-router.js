@@ -8,13 +8,15 @@ import {
   deleteCat,
 } from '../controllers/cat-controller.js';
 
+import { createThumbnail } from '../../middlewares.js';
+
 const upload = multer({ dest: 'uploads/' }); // configure multer to store files in 'uploads/' directory
 
 const catRouter = express.Router();
 
 catRouter.route('/')
 .get(getCat)
-.post(upload.single('file'), postCat); // use multer middleware for file upload
+.post(upload.single('file'), createThumbnail, postCat); // use multer middleware for file upload
 
 catRouter.route('/:id')
 .get(getCatById)
