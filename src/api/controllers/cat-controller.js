@@ -1,7 +1,7 @@
 import {addCat, findCatById, listAllCats} from "../models/cat-model.js";
 
-const getCat = (req, res) => {
-  res.json(listAllCats());
+const getCat = async (req, res) => {
+  res.json(await listAllCats());
 };
 
 const getCatById = (req, res) => {
@@ -13,8 +13,10 @@ const getCatById = (req, res) => {
   }
 };
 
-const postCat = (req, res) => {
-  const result = addCat(req.body);
+const postCat = async (req, res) => {
+  req.body.filename = req.file.filename; // add this line
+  req.body.birthdate = new Date(req.body.birthdate).toISOString().slice(0, 10);
+  const result = await addCat(req.body);
   console.log(req.body);
   console.log(req.file);
   if (result.cat_id) {
