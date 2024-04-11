@@ -1,10 +1,11 @@
-// Note: db functions are async and must be called with await from the controller
-// How to handle errors in controller?
 import promisePool from '../../utils/database.js';
 
 const listAllCats = async () => {
-  const [rows] = await promisePool.query('SELECT * FROM wsk_cats');
-  console.log('rows', rows);
+  const [rows] = await promisePool.query(`
+    SELECT wsk_cats.*, wsk_users.name AS owner_name
+    FROM wsk_cats
+    JOIN wsk_users ON wsk_cats.owner = wsk_users.user_id
+  `);
   return rows;
 };
 
@@ -57,7 +58,13 @@ const removeCat = async (id) => {
   return {message: 'success'};
 };
 
-export {listAllCats, findCatById, addCat, modifyCat, removeCat};
+const getCatsByUserId = async (userId) => {
+  const [rows] = await promisePool.execute(
+    'SELECT * FROM wsk_cats WHERE owner = ?', [userId]);
+  return rows;
+};
+
+export {listAllCats, findCatById, addCat, modifyCat, removeCat, getCatsByUserId};
 
 /*
 // mock data

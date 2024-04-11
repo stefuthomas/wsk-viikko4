@@ -6,6 +6,7 @@ import {
   postCat,
   putCat,
   deleteCat,
+  getCatsByUserId,
 } from '../controllers/cat-controller.js';
 
 import { createThumbnail } from '../../middlewares.js';
@@ -22,5 +23,9 @@ catRouter.route('/:id')
 .get(getCatById)
 .put(putCat)
 .delete(deleteCat);
+
+
+catRouter.route('/user/:user_id')
+.get(getCatsByUserId);
 
 export default catRouter;
