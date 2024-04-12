@@ -1,4 +1,5 @@
 import {addUser, findUserById, listAllUsers} from '../models/user-model.js';
+import bcrypt from 'bcrypt';
 
 const getUser = (req, res) => {
   res.json(listAllUsers());
@@ -13,8 +14,10 @@ const getUserById = (req, res) => {
   }
 };
 
-const postUser = (req, res) => {
-  const result = addUser(req.body);
+const postUser = async (req, res) => {
+  console.log(req.body);
+  req.body.password = bcrypt.hashSync(req.body.password, 10);
+  const result= await addUser(req.body);
   if (result.user_id) {
     res.status(201);
     res.json({message: 'New user added.', result});
@@ -23,8 +26,14 @@ const postUser = (req, res) => {
   }
 };
 
-const putUser = (req, res) => {
-  res.json({message: 'User item updated.'});
+const putUser = async (req, res) => {
+  if (
+    res.locals.user.user_id !== Number(req.params.id) &&
+    res.locals.user.role !== 'admin'
+  ) {
+    res.sendStatus(403);
+    return;
+  }
 };
 
 const deleteUser = (req, res) => {

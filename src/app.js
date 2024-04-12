@@ -1,7 +1,9 @@
 import api from './api/index.js';
 import express from 'express';
 const app = express();
+import cors from 'cors';
 
+app.use(cors());
 app.use('/public', express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));

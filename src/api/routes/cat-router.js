@@ -9,7 +9,7 @@ import {
   getCatsByUserId,
 } from '../controllers/cat-controller.js';
 
-import { createThumbnail } from '../../middlewares.js';
+import { createThumbnail, authenticateToken } from '../../middlewares.js';
 
 const upload = multer({ dest: 'uploads/' }); // configure multer to store files in 'uploads/' directory
 
@@ -20,9 +20,9 @@ catRouter.route('/')
 .post(upload.single('file'), createThumbnail, postCat); // use multer middleware for file upload
 
 catRouter.route('/:id')
-.get(getCatById)
-.put(putCat)
-.delete(deleteCat);
+.get(authenticateToken, getCatById)
+.put(authenticateToken, putCat)
+.delete(authenticateToken, deleteCat);
 
 
 catRouter.route('/user/:user_id')
