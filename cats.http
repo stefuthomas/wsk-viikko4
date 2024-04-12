@@ -28,3 +28,11 @@ GET http://localhost:3000/api/v1/cats
 
 ### haku
 GET http://localhost:3000/api/v1/user/37
+
+### invalid data
+POST http://localhost:3000/api/v1/cats
+Content-Type: application/json
+
+{
+  "cat_name": ""
+}

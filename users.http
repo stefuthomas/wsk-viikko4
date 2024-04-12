@@ -21,3 +21,15 @@ content-type: application/json
 ### Get my user info
 GET http://localhost:3000/api/v1/auth/me
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozOCwibmFtZSI6IlBlbmEiLCJ1c2VybmFtZSI6InBlbmExMDAiLCJlbWFpbCI6InAuZW5hQG1haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzEyOTE3MTg5LCJleHAiOjE3MTMwMDM1ODl9.Z9vujt9nNIH1HXJQoXOXMha3EdVNqV0SYClJZYzWy3o
+
+### Invalid post
+POST http://localhost:3000/api/v1/users
+Content-Type: application/json
+
+{
+  "name": "incorrect",
+  "username": "",
+  "password": "incorrect",
+  "email": "incorrect",
+  "role": "user"
+}
