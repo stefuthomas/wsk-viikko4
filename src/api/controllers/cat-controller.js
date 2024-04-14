@@ -39,12 +39,14 @@ const postCat = async (req, res) => {
   }
 };
 
-const putCat = (req, res) => {
-  res.sendStatus(200);
+const updateCat = (req, res) => {
+  res.json({message: 'Cat item updated.'});
+  res.sendStatus(200)
 };
 
 const deleteCat = (req, res) => {
-  res.sendStatus(200);
+  res.json({message: 'Cat item deleted.'});
+  res.sendStatus(200)
 };
 
-export {getCat, getCatById, postCat, putCat, deleteCat, getCatsByUserId};
+export {getCat, getCatById, postCat, updateCat, deleteCat, getCatsByUserId};
