@@ -45,7 +45,7 @@ const postCat = async (req, res) => {
   }
 };
 
-const putCat = async (req, res) => {
+const updateCat = async (req, res) => {
   const result = await modifyCat(req.body, req.params.id, res.locals.user);
   if (!result) {
     res.sendStatus(400);
@@ -58,4 +58,4 @@ const deleteCat = (req, res) => {
   res.sendStatus(200);
 };
 
-export {getCat, getCatById, postCat, putCat, deleteCat, getCatsByUserId};
+export {getCat, getCatById, postCat, updateCat, deleteCat, getCatsByUserId};
