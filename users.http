@@ -1,0 +1,23 @@
+### GET, get all users
+GET http://localhost:3000/api/v1/users
+
+### POST, create a new user
+POST http://localhost:3000/api/v1/users
+content-type: application/json
+
+{
+  "name": "Uusi kaveri",
+  "username": "uusiman3000",
+  "email": "uusemail@mail.com",
+  "role": "user",
+  "password": "newpassword"
+}
+
+### GET, get user with id 3609
+GET http://localhost:3000/api/v1/users/3609
+
+### PUT, update user with id 3609
+PUT http://localhost:3000/api/v1/users/3609
+
+### DELETE, delete user with id 3609
+DELETE http://localhost:3000/api/v1/users/3609

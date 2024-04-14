@@ -4,8 +4,8 @@ import {
   getCat,
   getCatById,
   postCat,
-  putCat,
   deleteCat,
+  updateCat,
 } from '../controllers/cat-controller.js';
 
 const upload = multer({ dest: 'uploads/' }); // configure multer to store files in 'uploads/' directory
@@ -18,7 +18,7 @@ catRouter.route('/')
 
 catRouter.route('/:id')
 .get(getCatById)
-.put(putCat)
+.put(updateCat)
 .delete(deleteCat);
 
 export default catRouter;
