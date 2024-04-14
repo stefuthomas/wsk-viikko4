@@ -15,8 +15,6 @@ const getCatById = (req, res) => {
 
 const postCat = (req, res) => {
   const result = addCat(req.body);
-  console.log(req.body);
-  console.log(req.file);
   if (result.cat_id) {
     res.status(201);
     res.json({message: 'New cat added.', result});
@@ -25,14 +23,14 @@ const postCat = (req, res) => {
   }
 };
 
-const putCat = (req, res) => {
-  // not implemented in this example, this is future homework
-  res.sendStatus(200);
-};
+const updateCat = (req, res) => {
+  res.json({message: 'Cat item updated.'});
+  res.sendStatus(200)
+}
 
 const deleteCat = (req, res) => {
-  // not implemented in this example, this is future homework
-  res.sendStatus(200);
-};
+  res.json({message: 'Cat item deleted.'});
+  res.sendStatus(200)
+}
 
-export {getCat, getCatById, postCat, putCat, deleteCat};
+export {getCat, getCatById, postCat, updateCat, deleteCat};

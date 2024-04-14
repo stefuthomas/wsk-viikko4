@@ -4,7 +4,7 @@ import {
   getCat,
   getCatById,
   postCat,
-  putCat,
+  updateCat,
   deleteCat,
 } from '../controllers/cat-controller.js';
 
@@ -20,7 +20,7 @@ catRouter.route('/')
 
 catRouter.route('/:id')
 .get(getCatById)
-.put(putCat)
+.put(updateCat)
 .delete(deleteCat);
 
 export default catRouter;
